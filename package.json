@@ -1,0 +1,24 @@
+{
+  "name": "desafrio_clase_10",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GonzaloLascano/CH_BE_08.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GonzaloLascano/CH_BE_08/issues"
+  },
+  "homepage": "https://github.com/GonzaloLascano/CH_BE_08#readme",
+  "dependencies": {
+    "express": "^4.17.3",
+    "express-handlebars": "^5.2.0",
+    "socket.io": "^4.4.1"
+  }
+}
