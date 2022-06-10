@@ -1,6 +1,7 @@
 const socket = io.connect();
 
-function sendMsg() {
+function sendMsg(e) {
+    /* document.getElementById("messageButton") */
     let message = {content: document.getElementById('content').value, date: Date(), user: document.getElementById('userMail').value}
     socket.emit('message', message)
 }
@@ -37,15 +38,24 @@ function handleRenderer(productList){
 }
 
 socket.on('refresh', (data) => {
-    for (message of data) {
+    function appendMessge(content){
         let msg = document.createElement('p')
         msg.innerHTML = `
-            <span class="mail fw-bold text-primary">${message.user} </span>
-            <span class="date" style="color: brown;">${message.date} </span>
-            <span class="user fst-italic text-success">${message.content} </span>
+            <span class="mail fw-bold text-primary">${content.user} </span>
+            <span class="date" style="color: brown;">${content.date} </span>
+            <span class="user fst-italic text-success">${content.content} </span>
         `
         document.getElementById('messageBox').appendChild(msg)
     }
+    if (Array.isArray(data)){
+        for (message of data) {
+            appendMessge(message)
+        }
+    }
+    else {
+        appendMessge(data)
+    }
+    
 
 })
 

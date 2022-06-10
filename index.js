@@ -16,7 +16,8 @@ const io = new IoServer(httpServer)
 const PORT = 3000
 
 httpServer.listen(PORT, () => console.log('SERVER ON'))
-httpServer.on('error', (error) => console.log({mensaje: `hubo un error :( ${error}`})) 
+httpServer.on('error', (error) => console.log({mensaje: `hubo un error :( ${error}`}))
+app.use(express.static('public')) 
 
 io.on('connection', (socket) => {
     // "connection" se ejecuta la primera vez que se abre una nueva conexión
@@ -29,7 +30,7 @@ io.on('connection', (socket) => {
     socket.on('message', (data) =>{
         messages.push(data)
         console.log(data)
-        io.sockets.emit('refresh', messages)
+        io.sockets.emit('refresh', data)
     })
     socket.emit('refresh', messages)
     
